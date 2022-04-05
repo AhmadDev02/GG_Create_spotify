@@ -1,4 +1,4 @@
-const clientId = "82a3a4317fd541328b17c76d1f28173d"; // Insert client ID here.
+const clientId = "d120388710c6420bbeae6b287f495818y"; // Insert client ID here.
 const redirectUri = 'http://localhost:3000/'; // Have to add this to your accepted Spotify redirect URIs on the Spotify API.
 // const redirectUri = 'http://makeshift-work.surge.sh/';
 

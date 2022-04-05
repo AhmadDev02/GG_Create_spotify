@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import './App.css';
 
 import Playlist from '../Playlist/Playlist';
@@ -6,7 +6,14 @@ import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
 import Spotify from '../../util/Spotify';
 
+// ini adalah redux
+import { useSelector, useDispatch } from 'react-redux';
+import { setToken } from '../../Store/tokenSlice'
+
+
 class App extends React.Component {
+  
+  
   constructor(props) {
     super(props);
 
@@ -22,6 +29,32 @@ class App extends React.Component {
     this.updatePlaylistName = this.updatePlaylistName.bind(this);
     this.savePlaylist = this.savePlaylist.bind(this);
   }
+
+  // Ini adalah redux
+  app2() {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const token = useSelector((state) => state.token.value);
+    // eslint-disable-next-line no-console
+    console.log('token', token);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const dispatch = useDispatch();
+
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useEffect(() => {
+      // eslint-disable-next-line no-undef
+      const user = getUser();
+      if (!user.token) {
+        // eslint-disable-next-line no-undef
+        interceptLoginRedirect();
+      } else {
+        dispatch(setToken(user.token));
+        // eslint-disable-next-line no-undef
+        getProfile();
+      }
+    }, []);
+  }
+  
+
 
   search(term) {
     Spotify.search(term).then(searchResults => {
@@ -58,6 +91,7 @@ class App extends React.Component {
   }
 
   render() {
+   
     return (
       <div>
         <h1>Create<span className="highlight">New</span>Playlist in Spotify</h1>
@@ -79,7 +113,3 @@ class App extends React.Component {
 
 export default App;
 
-
-
-// WEBPACK FOOTER //
-// ./src/components/App/App.js
