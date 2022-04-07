@@ -1,4 +1,4 @@
-const clientId = "d120388710c6420bbeae6b287f495818y"; // Insert client ID here.
+const clientId = "01d46160c0de4c72b811392a7d0b3362"; // Insert client ID here.
 const redirectUri = 'http://localhost:3000/'; // Have to add this to your accepted Spotify redirect URIs on the Spotify API.
 // const redirectUri = 'http://makeshift-work.surge.sh/';
 
@@ -59,6 +59,8 @@ const Spotify = {
     ).then(response => response.json()
     ).then(jsonResponse => {
       userId = jsonResponse.id;
+      
+      
       return fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
         headers: headers,
         method: 'POST',
@@ -66,6 +68,8 @@ const Spotify = {
       }).then(response => response.json()
       ).then(jsonResponse => {
         const playlistId = jsonResponse.id;
+        
+        
         return fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`, {
           headers: headers,
           method: 'POST',
