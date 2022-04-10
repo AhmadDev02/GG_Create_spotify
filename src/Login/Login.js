@@ -35,8 +35,3 @@ class Login extends React.Component {
 }
 
 export default Login;
-
-
-
-// WEBPACK FOOTER //
-// ./src/components/App/App.js

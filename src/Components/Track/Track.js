@@ -20,17 +20,20 @@ class Track extends React.Component {
 
   renderAction() {
     if (this.props.isRemoval) {
-      return <a className="Track-action" onClick={this.removeTrack}>-</a>
+      return <button className='btn btn-success btn-lg' onClick={this.removeTrack}>Cancel</button>
     }
-    return <a className="Track-action" onClick={this.addTrack}>+</a>;
+    return <button className='btn btn-success btn-lg' onClick={this.addTrack}>Select</button>;
   }
 
   render() {
     return (
-      <div className="Track">
-        <div className="Track-information">
-          <h3>{this.props.track.name}</h3>
-          <p>{this.props.track.artist} | {this.props.track.album}</p>
+      <div  className='col-11 col-md-6 col-lg-3 mx-0 mb-4'>
+        <div className='card p-0 overflow-hidden h-100 shadow'>
+          <img src={this.props.track.album.image} className='card-img-top' alt='' />
+            <div className='card-body'>
+              <h3 className='card-tittle'>{this.props.track.name}</h3>
+              <p className='card-text' >{this.props.track.artist} | {this.props.track.album}</p>
+          </div>
         </div>
         {this.renderAction()}
       </div>

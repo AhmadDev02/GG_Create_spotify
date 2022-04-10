@@ -19,10 +19,8 @@ class Masuk extends React.Component {
 
   render() {
     return (
-      <div className="d-flex justify-content-center align-items-center"
-      style={{ minHeight: "100vh" }}>
-            <button onClick={this.login}>Login</button>
-            
+      <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "100vh" }}>
+        <button onClick={this.login}>Login</button>
       </div>
     );
   }
